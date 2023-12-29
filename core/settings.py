@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Local
     "accounts.apps.AccountsConfig",
+    "quiz.apps.QuizConfig",
+    # 3rd Party
     "allauth",
     "allauth.account",
 ]
@@ -138,3 +141,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

@@ -1,0 +1,27 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+{% if error_message %}
+<p class="error-message">{{ error_message }}</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ question_form | crispy }}
+    {{ choice_formset.management_form }}
+    <p>Choices</p>
+    {% for form in choice_formset %}
+    {{ form.id }}
+    <div class="choice-form">
+      {% for field in form %}
+        {{ field|as_crispy_field }}
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <input type="submit" class="btn btn-outline-primary" value="Save and Add Another" name="save_add_another">
+    <input type="submit" class="btn btn-outline-primary" value="Done">
+</form>
+</div>
+{% endblock content %}

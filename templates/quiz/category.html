@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+{% block content %}
+<div class="container">
+<h1>{{ category.name }}</h1>
+
+<ul>
+  {% for subcategory in subcategories %}
+    <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a></li>
+  {% empty %}
+    <p>No quiz in this category yet.</p>
+  {% endfor %}
+</ul>
+</div>
+{% endblock content %}

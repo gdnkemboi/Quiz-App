@@ -19,6 +19,7 @@ class SubcategoryInline(admin.TabularInline):
 
 class CategoryAdmin(admin.ModelAdmin):
     inlines = [SubcategoryInline]
+    exclude = ("slug",)
 
 class SubcategoryAdmin(admin.ModelAdmin):
     inlines = [QuestionInline]

@@ -1,0 +1,24 @@
+{% extends "_base.html" %}
+{% block content %}
+<div class="container">
+<h4>Welcome {{ user.username }}</h4>
+<p><a href="{% url 'create_quiz' %}">Add Quiz</a></p>
+<h2>Recently Published</h2>
+<ul>
+  {% for subcategory in recent_subcategories %}
+  <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a></li>
+  {% endfor %}
+</ul>
+
+{% for category_data in categories_and_subcategories %}
+  {% if category_data.subcategories %}
+    <h2><a href="{% url 'category' slug=category_data.category.slug %}">{{ category_data.category.name }}</a></h2>
+    <ul>
+    {% for subcategory in category_data.subcategories %}
+        <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a></li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endfor %}
+</div>
+{% endblock content %}

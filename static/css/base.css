@@ -1,0 +1,16 @@
+li {
+  list-style-type: none;
+}
+
+button > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button:hover > a {
+  color: inherit;
+}
+
+.container {
+  padding: 20px 5%;
+}

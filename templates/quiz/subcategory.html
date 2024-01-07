@@ -1,0 +1,31 @@
+{% extends "_base.html" %}
+{% block content %}
+<div class="container">
+<h1>{{ subcategory.name }}</h1>
+{% if object.creator == request.user or request.user.is_superuser %}
+  <button type="button" class="btn btn-outline-primary"><a href="{% url 'update_quiz' pk=subcategory.id %}">Edit</a></button> | <button type="button" class="btn btn-outline-primary"><a href="{% url 'subcategory_delete' pk=subcategory.id %}">Delete</a></button>
+{% endif %}
+
+<form method="post" action="{% url 'subcategory' pk=subcategory.id %}">
+  {% csrf_token %}
+  <ul>
+    {% for question_data in questions_and_choices %}
+      <h3>{{ question_data.question.text }}</h3>
+      <ul>
+        {% for choice in question_data.choices %}
+          <li>
+            <label>
+              <input type="radio" name="question_{{ question_data.question.id }}" value="{{ choice.id }}">
+              {{ choice.text }}
+            </label>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </ul>
+  {% if questions_and_choices %}
+  <button type="submit" class="btn btn-outline-primary">Submit</button>
+  {% endif %}
+</form>
+</div>
+{% endblock content %}

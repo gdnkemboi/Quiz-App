@@ -5,7 +5,7 @@ from .models import Subcategory, Question, Choice
 class SubcategoryForm(forms.ModelForm):
     class Meta:
         model = Subcategory
-        fields = ["category", "name"]
+        fields = ["category", "name", "cover"]
 
 class QuestionForm(forms.ModelForm):
     class Meta:

@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="container">
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form | crispy }}
     <input class="btn btn-outline-primary" type="submit" value="Update"> | <button type="button" class="btn btn-outline-primary"><a href="{% url 'add_question' subcategory_id=subcategory.id %}">Add Questions</a></button>

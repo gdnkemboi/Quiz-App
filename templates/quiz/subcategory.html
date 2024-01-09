@@ -5,6 +5,9 @@
 {% if object.creator == request.user or request.user.is_superuser %}
   <button type="button" class="btn btn-outline-primary"><a href="{% url 'update_quiz' pk=subcategory.id %}">Edit</a></button> | <button type="button" class="btn btn-outline-primary"><a href="{% url 'subcategory_delete' pk=subcategory.id %}">Delete</a></button>
 {% endif %}
+{% if subcategory.cover %}
+  <img class="bookcover" src="{{ subcategory.cover.url}}" alt="{{ book.title }}">
+{% endif %}
 
 <form method="post" action="{% url 'subcategory' pk=subcategory.id %}">
   {% csrf_token %}

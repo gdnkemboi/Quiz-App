@@ -122,7 +122,6 @@ class SubcategoryCreateView(LoginRequiredMixin, CreateView):
         self.success_url = reverse_lazy(
             "add_question", kwargs={"subcategory_id": subcategory_id}
         )
-
         return super().form_valid(form)
 
 

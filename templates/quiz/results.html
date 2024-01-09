@@ -5,9 +5,9 @@
 
 <p>Your score:</p>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: {{ percentage }}%;" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100">{{ percentage }}%</div>
+  <div class="progress-bar" role="progressbar" style="width: {{ percentage }}%;" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100">{{ percentage|floatformat:"0" }}%</div>
 </div>
 
-<p>{{ percentage }}% Correct</p>
+<p>{{ percentage|floatformat:"0" }}% Correct</p>
 </div>
 {% endblock content %}

@@ -13,4 +13,72 @@ button:hover > a {
 
 .container {
   padding: 20px 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+div.greetings {
+  flex: auto;
+  height: 150px;
+  background-color: rgb(219, 234, 254);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.greetings > button {
+  border-radius: 50px;
+}
+
+.recent-published,
+.categories {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-published > p,
+.categories > p {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.category_title {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.category_name {
+  color: black;
+  font-size: large;
+  font-weight: 700;
+}
+
+.see_all {
+  font-size: medium;
+  font-weight: 500;
+}
+
+.quiz {
+  display: flex;
+  gap: 20px;
+}
+
+.recent-published .img,
+.categories .img {
+  height: 150px;
+  width: 150px;
+  border: 0;
+}
+
+.img img,
+.img img {
+  height: 150px;
+  width: 150px;
+  border-radius: 12px;
+  object-fit: cover;
 }

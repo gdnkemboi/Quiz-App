@@ -1,18 +1,18 @@
 {% extends "_base.html" %}
 {% block content %}
 <div class="container">
-<h3>{{ user.username }}</h3>
-<p><a href="{% url 'create_quiz' %}">Add Quiz</a></p>
-{% if user_subcategories %}
-<h4>Quiz created by you:</h4>
-{% endif %}
-<ul>
-    {% for subcategory in user_subcategories %}
-        <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a></li>
-    {% empty %}
-        <li>You have not created any quiz yet.</li>
-    {% endfor %}
-</ul>
-<button type="button" class="btn btn-outline-primary"><a href="{% url 'account_logout' %}">Log Out</a></button>
+    <h3>{{ user.username }}</h3>
+    <p><a href="{% url 'create_quiz' %}">Add Quiz</a></p>
+    {% if user_subcategories %}
+    <h4>My Library</h4>
+    {% endif %}
+    <ul>
+        {% for subcategory in user_subcategories %}
+            <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a></li>
+        {% empty %}
+            <li>You have not created any quiz yet.</li>
+        {% endfor %}
+    </ul>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'account_logout' %}">Log Out</a></button>
 </div>
 {% endblock %}

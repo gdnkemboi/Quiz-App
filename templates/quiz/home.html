@@ -1,24 +1,45 @@
 {% extends "_base.html" %}
 {% block content %}
-<div class="container">
-<h4>Welcome {{ user.username }}</h4>
-<p><a href="{% url 'create_quiz' %}">Add Quiz</a></p>
-<h2>Recently Published</h2>
-<ul>
-  {% for subcategory in recent_subcategories %}
-  <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a></li>
-  {% endfor %}
-</ul>
+  <div class="container">
+    <div class="greetings">
+      <h4>Welcome {{ user.username }}</h4>
+      <button class="btn btn-outline-primary"><a href="{% url 'create_quiz' %}">Add Quiz</a></button>
+    </div>
+    <div class="recent-published">
+      <p>Recently Published</p>
+      <div class="quiz">
+        {% for subcategory in recent_subcategories %}
+        <div>
+          <div class="img">
+            <a href="{{ subcategory.get_absolute_url }}"><img src="{{ subcategory.cover.url}}"></a>
+          </div>
+          <a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a>
+          <p>By {{ subcategory.creator }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
 
-{% for category_data in categories_and_subcategories %}
-  {% if category_data.subcategories %}
-    <h2><a href="{% url 'category' slug=category_data.category.slug %}">{{ category_data.category.name }}</a></h2>
-    <ul>
-    {% for subcategory in category_data.subcategories %}
-        <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a></li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endfor %}
-</div>
+    <div class="categories">
+      {% for category_data in categories_and_subcategories %}
+        {% if category_data.subcategories %}
+          <div class="category_title">
+            <p class="category_name">{{ category_data.category.name }}</p>
+            <p class="see_all"><a href="{% url 'category' slug=category_data.category.slug %}">See all ({{ category_data.subcategory_count }}).</a></p>
+          </div>
+          <div class="quiz">
+          {% for subcategory in category_data.subcategories %}
+              <div>
+                <div class="img">
+                  <a href="{{ subcategory.get_absolute_url }}"><img src="{{ subcategory.cover.url}}"></a>
+                </div>
+                <a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a>
+                <p>By {{ subcategory.creator }}</p>
+              </div>
+          {% endfor %}
+            </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
 {% endblock content %}

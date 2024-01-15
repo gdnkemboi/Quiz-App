@@ -33,8 +33,10 @@ class HomePageView(TemplateView):
                 :4
             ]
 
+            subcategory_count = Subcategory.objects.filter(category=category).count()
+
             categories_and_subcategories.append(
-                {"category": category, "subcategories": subcategories}
+                {"category": category, "subcategories": subcategories, "subcategory_count": subcategory_count}
             )
 
         context["recent_subcategories"] = recent_subcategories

@@ -3,7 +3,7 @@
 <div class="container">
   <h1>{{ subcategory.name }}</h1>
   {% if object.creator == request.user or request.user.is_superuser %}
-    <button type="button" class="btn btn-outline-primary"><a href="{% url 'update_quiz' pk=subcategory.id %}">Edit</a></button> | <button type="button" class="btn btn-outline-primary"><a href="{% url 'subcategory_delete' pk=subcategory.id %}">Delete</a></button>
+    <a class="btn btn-outline-primary" href="{% url 'update_quiz' pk=subcategory.id %}">Edit</a> | <a class="btn btn-outline-primary" href="{% url 'subcategory_delete' pk=subcategory.id %}">Delete</a>
   {% endif %}
   {% if subcategory.cover %}
     <img src="{{ subcategory.cover.url}}">

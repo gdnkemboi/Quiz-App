@@ -1,14 +1,30 @@
 {% extends "_base.html" %}
-{% block content %}
-<div class="container">
-<h1>{{ category.name }}</h1>
+{% load static %}
+{% block content %} 
 
-<ul>
-  {% for subcategory in subcategories %}
-    <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a></li>
-  {% empty %}
-    <p>No quiz in this category yet.</p>
-  {% endfor %}
-</ul>
+<div class="container">
+  <h1>{{ category.name }}</h1>
+
+  <div class="subcategories">
+    {% for subcategory in subcategories %}      
+    <hr />
+    <div class="subcategory">
+      <div class="img">
+        <a href="{{ subcategory.get_absolute_url }}"><img src="{{ subcategory.cover.url }}" /></a>
+      </div>
+      <div class="sub_details">
+        <a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a>
+        <div>
+          <p><img src="{% static 'images/help-box-multiple.svg' %}" width="25" height="25" />{{ subcategory.question_count }}</p>
+          <p>{{ subcategory.created_at|date:"M j, Y" }}</p>
+          <p>By {{ subcategory.creator }}</p>    
+        </div>
+      </div>
+    </div>
+    {% empty %}
+      <p>No quiz in this category yet.</p>
+    {% endfor %}    
+    <hr />
+  </div>
 </div>
 {% endblock content %}

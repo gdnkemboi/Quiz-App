@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+}
+
 li {
   list-style-type: none;
 }
@@ -81,4 +93,43 @@ div.greetings {
   width: 150px;
   border-radius: 12px;
   object-fit: cover;
+}
+
+.subcategory {
+  display: flex;
+}
+
+.subcategory > .img {
+  height: 100px;
+  width: 100px;
+  border: 0;
+  margin-right: 20px;
+}
+
+.subcategory > .img img {
+  height: 100px;
+  width: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.sub_details {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub_details > a {
+  font-size: large;
+  font-weight: 700;
+  color: black;
+  text-decoration: none;
+}
+
+.sub_details > div {
+  display: flex;
+  gap: 15px;
+}
+
+.sub_details > div p:first-child > img {
+  margin-right: 10px;
 }

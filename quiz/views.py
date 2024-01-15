@@ -13,6 +13,7 @@ from .forms import SubcategoryForm, QuestionForm, ChoiceForm, ChoiceFormSet
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy, reverse
 from django import forms
+from django.db.models import Count
 
 
 class HomePageView(TemplateView):
@@ -59,7 +60,9 @@ class SubcategoryListView(ListView):
         context = super().get_context_data(**kwargs)
         slug = self.kwargs.get("slug")
         category = get_object_or_404(Category, slug=slug)
+        subcategories = Subcategory.objects.filter(category=category).annotate(question_count=Count('question'))
         context["category"] = category
+        context["subcategories"] = subcategories
         return context
 
 

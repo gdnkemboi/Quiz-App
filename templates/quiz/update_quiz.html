@@ -5,7 +5,7 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form | crispy }}
-    <input class="btn btn-outline-primary" type="submit" value="Update"> | <button type="button" class="btn btn-outline-primary"><a href="{% url 'add_question' subcategory_id=subcategory.id %}">Add Questions</a></button>
+    <input class="btn btn-outline-primary" type="submit" value="Update"> | <a class="btn btn-outline-primary" href="{% url 'add_question' subcategory_id=subcategory.id %}">Add Questions</a>
   </form>
 
   <ul>
@@ -16,7 +16,7 @@
             <li>{{ choice.text }}</li>
           {% endfor %}
         </ul>
-        <button type="button" class="btn btn-outline-primary"><a href="{% url 'edit_question' subcategory_id=subcategory.id pk=question_data.question.id %}">Edit</a></button> | <button type="button" class="btn btn-outline-primary"><a href="{% url 'question_delete' pk=question_data.question.id %}">Delete</a></button>
+        <a class="btn btn-outline-primary" href="{% url 'edit_question' subcategory_id=subcategory.id pk=question_data.question.id %}">Edit</a> | <a class="btn btn-outline-primary" href="{% url 'question_delete' pk=question_data.question.id %}">Delete</a>
     {% endfor %}
   </ul>
 </div>

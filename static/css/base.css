@@ -124,3 +124,63 @@ div.greetings {
 .sub_details > div p:first-child > img {
   margin-right: 10px;
 }
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.profile_image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile_image > img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.profile_details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.username {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.library {
+  margin-top: 20px;
+}
+
+.library > p {
+  color: black;
+  font-size: large;
+  font-weight: 700;
+}
+
+.quiz > .add_quiz {
+  height: 150px;
+  width: 150px;
+  border: 0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d1d5db;
+}
+
+.add_quiz > a {
+  border-radius: 50px;
+}

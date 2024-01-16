@@ -1,18 +1,43 @@
-{% extends "_base.html" %}
-{% block content %}
+{% extends "_base.html" %} {% block content %} {% load static %}
+
 <div class="container">
-    <h3>{{ user.username }}</h3>
-    <p><a href="{% url 'create_quiz' %}">Add Quiz</a></p>
-    {% if user_subcategories %}
-    <h4>My Library</h4>
-    {% endif %}
-    <ul>
-        {% for subcategory in user_subcategories %}
-            <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a></li>
-        {% empty %}
-            <li>You have not created any quiz yet.</li>
-        {% endfor %}
-    </ul>
-    <a class="btn btn-outline-primary" href="{% url 'account_logout' %}">Log Out</a>
+  <div class="profile">
+    <div class="profile_image">
+      {% if user.userprofile.profile_image %}
+      <img src="{{ user.userprofile.profile_image.url }}" />
+      {% else %}
+      <img src="{% static 'images/account.svg' %}" />
+      {% endif %}
+    </div>
+    <div class="profile_details">
+      <p class="username">{{ user.username }}</p>
+      <a class="btn btn-outline-primary" href="{% url 'account_logout' %}"
+        >Log Out</a
+      >
+    </div>
+  </div>
+
+  <div class="library">
+    <p>My Library</p>
+    <div class="quiz">
+      <div class="add_quiz">
+        <a class="btn btn-outline-primary" href="{% url 'create_quiz' %}"
+          >Add Quiz</a
+        >
+      </div>
+      {% if user_subcategories %} 
+      {% for subcategory in user_subcategories %}
+      <div>
+        <div class="img">
+          <a href="{{ subcategory.get_absolute_url }}"
+            ><img src="{{ subcategory.cover.url}}"
+          /></a>
+        </div>
+        <a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a>
+      </div>
+      {% endfor %} 
+      {% endif %}
+    </div>
+  </div>
 </div>
 {% endblock %}

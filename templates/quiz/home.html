@@ -1,4 +1,5 @@
 {% extends "_base.html" %}
+{% load static %}
 {% block content %}
   <div class="container">
     <div class="greetings">
@@ -11,7 +12,11 @@
         {% for subcategory in recent_subcategories %}
         <div>
           <div class="img">
-            <a href="{{ subcategory.get_absolute_url }}"><img src="{{ subcategory.cover.url}}"></a>
+            {% if subcategory.cover %}
+              <a href="{{ subcategory.get_absolute_url }}"><img src="{{ subcategory.cover.url}}"></a>
+            {% else %}
+              <a href="{{ subcategory.get_absolute_url }}"><img src="{% static 'images/no-cover.svg' %}"></a>
+            {% endif %}
           </div>
           <a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a>
           <p>By {{ subcategory.creator }}</p>
@@ -31,7 +36,11 @@
           {% for subcategory in category_data.subcategories %}
               <div>
                 <div class="img">
-                  <a href="{{ subcategory.get_absolute_url }}"><img src="{{ subcategory.cover.url}}"></a>
+                  {% if subcategory.cover %}
+                    <a href="{{ subcategory.get_absolute_url }}"><img src="{{ subcategory.cover.url}}"></a>
+                  {% else %}
+                    <a href="{{ subcategory.get_absolute_url }}"><img src="{% static 'images/no-cover.svg' %}" width="100%" height="100%"></a>
+                  {% endif %}
                 </div>
                 <a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a>
                 <p>By {{ subcategory.creator }}</p>

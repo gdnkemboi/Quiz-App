@@ -29,9 +29,11 @@
       {% for subcategory in user_subcategories %}
       <div>
         <div class="img">
-          <a href="{{ subcategory.get_absolute_url }}"
-            ><img src="{{ subcategory.cover.url}}"
-          /></a>
+          {% if subcategory.cover %}
+            <a href="{{ subcategory.get_absolute_url }}"><img src="{{ subcategory.cover.url}}"/></a>
+          {% else %}
+            <a href="{{ subcategory.get_absolute_url }}"><img src="{% static 'images/no-cover.svg' %}"></a>
+          {% endif %}
         </div>
         <a href="{{ subcategory.get_absolute_url }}">{{ subcategory.name }}</a>
       </div>

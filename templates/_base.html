@@ -36,7 +36,13 @@
           </div>
           {% if user.is_authenticated %}
           <div class="justify-content-end">
-            <a class="btn btn-outline-light" href="{% url 'profile' %}">Profile</a>
+            <div class="profile_image">
+              {% if user.userprofile.profile_image %}
+                <a href="{% url 'profile' %}"><img src="{{ user.userprofile.profile_image.url }}" width="30px" height="30px"/></a>
+              {% else %}
+                <a href="{% url 'profile' %}"><img src="{% static 'images/account.svg' %}" width="30px" height="30px"/></a>
+              {% endif %}
+            </div>
           </div>
           {% else %}
             <div class="justify-content-end">

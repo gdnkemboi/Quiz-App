@@ -129,23 +129,24 @@ div.greetings {
   display: flex;
   align-items: center;
   gap: 20px;
-  border: 1px solid black;
   border-radius: 10px;
 }
 
 .profile_image {
   width: 150px;
   height: 150px;
+  border: 2px solid black;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #cbd5e1;
 }
 
 .profile_image > img{
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
 }
 
@@ -158,6 +159,11 @@ div.greetings {
 .username {
   font-size: 50px;
   font-weight: 700;
+  margin: 0;
+}
+
+.profile_details > a {
+  border-radius: 50px;
 }
 
 .library {
@@ -183,4 +189,16 @@ div.greetings {
 
 .add_quiz > a {
   border-radius: 50px;
+}
+
+.justify-content-end > .profile_image {
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #cbd5e1
 }

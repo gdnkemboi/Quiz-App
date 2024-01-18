@@ -38,9 +38,9 @@
           <div class="justify-content-end">
             <div class="profile_image">
               {% if user.userprofile.profile_image %}
-                <a href="{% url 'profile' %}"><img src="{{ user.userprofile.profile_image.url }}" width="30px" height="30px"/></a>
+                <a href="{% url 'profile' %}"><img src="{{ user.userprofile.profile_image.url }}" width="40px" height="40px"/></a>
               {% else %}
-                <a href="{% url 'profile' %}"><img src="{% static 'images/account.svg' %}" width="30px" height="30px"/></a>
+                <a href="{% url 'profile' %}"><img src="{% static 'images/account.svg' %}" width="40px" height="40px"/></a>
               {% endif %}
             </div>
           </div>

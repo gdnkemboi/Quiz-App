@@ -11,9 +11,10 @@
     </div>
     <div class="profile_details">
       <p class="username">{{ user.username }}</p>
-      <a class="btn btn-outline-primary" href="{% url 'account_logout' %}"
-        >Log Out</a
-      >
+      <div>
+        <a class="btn btn-outline-primary" href="{% url 'profile_edit' pk=user.id %}">Edit</a>
+        <a class="btn btn-outline-primary" href="{% url 'account_logout' %}">Log Out</a>
+      </div>
     </div>
   </div>
   <hr>

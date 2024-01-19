@@ -208,7 +208,6 @@ class QuizUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         subcategory = self.get_object()
         questions_and_choices = []
-        print(subcategory.name)
 
         # Get all questions and their choices related to this subcategory
         questions = Question.objects.filter(sub_category=subcategory)

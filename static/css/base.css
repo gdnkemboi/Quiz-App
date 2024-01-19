@@ -141,7 +141,6 @@ div.greetings {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #cbd5e1;
 }
 
 .profile_image > img{
@@ -200,5 +199,4 @@ div.greetings {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #cbd5e1
 }

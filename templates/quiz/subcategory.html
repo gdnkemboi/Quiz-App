@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
   <h1>{{ subcategory.name }}</h1>
-  {% if object.creator == request.user or request.user.is_superuser %}
+  {% if subcategory.creator == request.user or request.user.is_superuser %}
     <a class="btn btn-outline-primary" href="{% url 'update_quiz' pk=subcategory.id %}">Edit</a> | <a class="btn btn-outline-primary" href="{% url 'subcategory_delete' pk=subcategory.id %}">Delete</a>
   {% endif %}
   {% if subcategory.cover %}

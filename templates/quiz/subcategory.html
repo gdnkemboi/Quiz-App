@@ -1,34 +1,50 @@
 {% extends "_base.html" %}
 {% block content %}
+{% load static %}
 <div class="container">
-  <h1>{{ subcategory.name }}</h1>
-  {% if subcategory.creator == request.user or request.user.is_superuser %}
-    <a class="btn btn-outline-primary" href="{% url 'update_quiz' pk=subcategory.id %}">Edit</a> | <a class="btn btn-outline-primary" href="{% url 'subcategory_delete' pk=subcategory.id %}">Delete</a>
-  {% endif %}
-  {% if subcategory.cover %}
-    <img src="{{ subcategory.cover.url}}">
-  {% endif %}
-
-  <form method="post" action="{% url 'subcategory' pk=subcategory.id %}">
-    {% csrf_token %}
-    <ul>
-      {% for question_data in questions_and_choices %}
-        <h3>{{ question_data.question.text }}</h3>
-        <ul>
-          {% for choice in question_data.choices %}
-            <li>
-              <label>
-                <input type="radio" name="question_{{ question_data.question.id }}" value="{{ choice.id }}">
-                {{ choice.text }}
-              </label>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endfor %}
-    </ul>
+  <div class="quiz_title">
+    <h1>{{ subcategory.name }}</h1>
+    <div>
+      {% if subcategory.creator == request.user or request.user.is_superuser %}
+        <a class="btn btn-outline-primary" href="{% url 'update_quiz' pk=subcategory.id %}">Edit</a> | <a class="btn btn-outline-primary" href="{% url 'subcategory_delete' pk=subcategory.id %}">Delete</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="quiz_body">
     {% if questions_and_choices %}
-    <button type="submit" class="btn btn-outline-primary">Submit</button>
+      <form method="post" action="{% url 'subcategory' pk=subcategory.id %}">
+        {% csrf_token %}
+      
+        <div class="question-container">
+          {% for question_data in questions_and_choices %}
+          {% with number=forloop.counter %}
+            <div class="question {% if forloop.first %}first-question{% endif %} {% if forloop.last %}last-question{% endif %}">
+              <button type="button" onclick="prevCard()" {% if questions_and_choices|length == 1 %}style="display:none;"{% endif %}><img src="{% static 'images/chevron-left.svg' %}"></button>
+              <div class="question_body">
+                <p><span>{{ number }}</span>. {{ question_data.question.text }}</p>
+                <ul class="choices">
+                  {% for choice in question_data.choices %}
+                    <li onclick="selectRadioButton(this)">
+                      <label>
+                        <input type="radio" name="question_{{ question_data.question.id }}" value="{{ choice.id }}">
+                        {{ choice.text }}
+                      </label>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <button type="button" onclick="nextCard()" {% if questions_and_choices|length == 1 %}style="display:none;"{% endif %}><img src="{% static 'images/chevron-right.svg' %}"></button>
+            </div>
+          {% endwith %}
+          {% endfor %}
+        </div>
+        <hr>
+        <div class="quiz_footer">
+          <div>Total Questions: {{ questions_and_choices|length }}</div>
+          <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </div>
+      </form>
     {% endif %}
-  </form>
+  </div>
 </div>
 {% endblock content %}

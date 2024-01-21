@@ -200,3 +200,81 @@ div.greetings {
   align-items: center;
   justify-content: center;
 }
+
+.quiz_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quiz_body {
+  display: flex;
+  gap: 20px;
+}
+
+.quiz_body > form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: black 5px solid;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.question {
+  align-items: center;
+}
+
+.question > button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+.question > button:hover {
+  background-color: #d1d5db;
+}
+
+.question_body {
+  flex: 1;
+}
+
+.question_body > p {
+  font-size: larger;
+  font-weight: 700;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choices > li {
+  border: black solid 1px;
+  border-radius: 30px;
+  padding: 5px;
+  width: 50%;
+}
+
+.selected {
+  background-color: #d2e87b;
+}
+
+.question-container {
+  flex: 1;
+}
+
+.quiz_footer {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

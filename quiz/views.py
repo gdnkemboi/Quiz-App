@@ -94,13 +94,12 @@ class SubcategoryDetailView(TemplateView):
     def post(self, request, *args, **kwargs):
         subcategory = Subcategory.objects.get(pk=kwargs["pk"])
         questions = Question.objects.filter(sub_category=subcategory)
-        total_questions = 0
+        total_questions = questions.count()
         correct_answers = 0
 
         for question in questions:
             choice_id = request.POST.get(f"question_{question.id}")
             if choice_id:
-                total_questions += 1
                 choice = Choice.objects.get(pk=choice_id)
                 if choice.is_correct:
                     correct_answers += 1

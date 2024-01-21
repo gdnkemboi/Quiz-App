@@ -35,4 +35,5 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         profile = form.save()
         user = profile.user
         user.username = form.cleaned_data["username"]
+        user.save()
         return super().form_valid(form)

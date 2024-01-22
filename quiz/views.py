@@ -23,7 +23,7 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         # Get 10 recently added subcategories
-        recent_subcategories = Subcategory.objects.order_by("-created_at")[:10]
+        recent_subcategories = Subcategory.objects.order_by("-created_at")[:6]
 
         # Get all categories together with four random sabcategories
         categories = Category.objects.all()
@@ -31,7 +31,7 @@ class HomePageView(TemplateView):
 
         for category in categories:
             subcategories = Subcategory.objects.filter(category=category).order_by("?")[
-                :4
+                :6
             ]
 
             subcategory_count = Subcategory.objects.filter(category=category).count()

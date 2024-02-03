@@ -13,7 +13,6 @@ from .forms import SubcategoryForm, QuestionForm, ChoiceForm, ChoiceFormSet
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy, reverse
 from django import forms
-from django.db.models import Count
 
 
 class HomePageView(TemplateView):
@@ -76,7 +75,7 @@ class SubcategoryDetailView(TemplateView):
 
         # Get all questions and their choices related to this subcategory
         questions_and_choices = []
-        questions = Question.objects.filter(sub_category=subcategory)
+        questions = Question.objects.filter(sub_category=subcategory).order_by('?')
 
         for question in questions:
             choices = Choice.objects.filter(question=question)

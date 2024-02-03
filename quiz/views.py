@@ -78,7 +78,7 @@ class SubcategoryDetailView(TemplateView):
         questions = Question.objects.filter(sub_category=subcategory).order_by('?')
 
         for question in questions:
-            choices = Choice.objects.filter(question=question)
+            choices = Choice.objects.filter(question=question).order_by('?')
             questions_and_choices.append({"question": question, "choices": choices})
 
         return render(

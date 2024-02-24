@@ -13,6 +13,7 @@ from .forms import SubcategoryForm, QuestionForm, ChoiceForm, ChoiceFormSet
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy, reverse
 from django import forms
+from django.db.models import Count
 
 
 class HomePageView(TemplateView):

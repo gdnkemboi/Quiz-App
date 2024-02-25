@@ -1,12 +1,11 @@
 # Quiz-App
-#### [Live Preview](#)
 #### Video Demo: <URL HERE>
 
 ## Description
 
 Quiz-App is a web application implemented using Python's web framework Django. Users can answer the quizzes already created by other users without being logged in. In order to create a quiz however, you need to be a logged in user. Users can create quizzes, edit them and also have the ability to delete them. During quiz creation users are needed to enter a category the quiz falls in, the name of the quiz and a cover photo (optional). The categories are pre-added which this can be done using the admin dashboard. The name of a quiz has to be unique. After this the user can enter the question and two or more choices labeling at least one as correct. Only the quiz creators and the superuser have the ability to edit or delete a quiz.
 
-Incase a user forgets their password, they can reset it by clicking on forgot password in the login page then enter their email in which they would receive an email with a link to reset their password.
+Incase a user forgets their password, they can reset it by clicking on forgot password in the login page then enter their email in which they would receive an email with a link to reset their password (The project as is at the moment however sends the email to the console but can be configured to send out the email to the users email address).
 
 The homepage contains quizzes listed by category and the recently added quiz. Each subcategory has a page containing all the quizzes it has. The profile page contains the user profile image and name together with a button to edit them and another to log out. It also contains a library section which lists all the quizzes created by that user.
 

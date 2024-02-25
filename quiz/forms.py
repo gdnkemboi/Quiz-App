@@ -7,6 +7,12 @@ class SubcategoryForm(forms.ModelForm):
         model = Subcategory
         fields = ["category", "name", "cover"]
 
+    def __init__(self, *args, **kwargs):
+        super(SubcategoryForm, self).__init__(*args, **kwargs)
+        self.fields['name'].error_messages = {
+            'unique': "Quiz with this name already exists.",
+        }
+
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question

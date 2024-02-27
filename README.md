@@ -11,6 +11,8 @@ The homepage contains quizzes listed by category and the recently added quiz. Ea
 
 In order to answer a quiz, a user clicks on that quiz, choose one of the choices and proceed to the next. When all question are answered the user will have their result displayed to them.
 
+There are five folders in the project i.e., accounts, core, media, quiz, static and templates. The "accounts" folder is the app containing the user accounts functionality, "core" folder is the django project app, "media" contains files uploaded by the users (cover photos and profile images), "quiz" folder contains the quiz app functionality and "templates" contains the html templates.
+
 ## Getting Started with Development
 
 ### 1. Clone the project

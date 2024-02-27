@@ -1,4 +1,5 @@
 # Quiz-App
+
 #### Video Demo: <URL HERE>
 
 ## Description
@@ -16,55 +17,69 @@ There are five folders in the project i.e., accounts, core, media, quiz, static 
 ## Getting Started with Development
 
 ### 1. Clone the project
+
 ```bash
-git clone https://github.com/gdnkemboi/CS50-Project-Quiz-App.git
+git clone https://github.com/gdnkemboi/Quiz-App.git
 ```
 
 ### 2. Navigate to the project directory
+
 ```bash
 cd CS50-Project-Quiz-App
 ```
 
 ### 3. Create a virtual environment and activate it
+
 ```bash
 python -m venv .venv
 source .venv/Scripts/activate
 ```
+
 ### 4. Install project dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 5. Setup the database (optional)
+
 - ### Postgresql installation
-    Install postgres following the instructions of their [website](https://www.postgresql.org/download/).
+
+  Install postgres following the instructions of their [website](https://www.postgresql.org/download/).
 
 - Open 'psql' (PostgreSQL's command-line tool to interact with the database server)
 - Enter the following SQL commands, to create a database and a user
+
 ```
 CREATE DATABASE mydatabase;
 CREATE USER myuser WITH PASSWORD 'mypassword';
 GRANT ALL PRIVILEGES ON DATABASE mydatabase TO myuser;
 ```
+
 ### 6. Create a .env file and add the database url
+
 ```
 -- If step 5 skipped you can use the default sqlite database
-DATABASE_URL=db.sqlite3
+DATABASE_URL=sqlite:///db.sqlite3
 
 -- For PostgreSQL usage
 DATABASE_URL=postgres://myuser:mypassword@localhost:5432/mydatabase
 ```
+
 ### 7. Run database migrations
+
 ```bash
 python manage.py migrate
 ```
 
 ### 8. Create superuser
+
 ```bash
 python manage.py createsuperuser
 ```
 
 ### 9. Run the development server
+
 ```bash
 python manage.py runserver
 ```

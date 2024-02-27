@@ -49,7 +49,7 @@ GRANT ALL PRIVILEGES ON DATABASE mydatabase TO myuser;
 ### 6. Create a .env file and add the database url
 ```
 -- If step 5 skipped you can use the default sqlite database
-DATABASE_URL=db.sqlite3
+DATABASE_URL=sqlite:///db.sqlite3
 
 -- For PostgreSQL usage
 DATABASE_URL=postgres://myuser:mypassword@localhost:5432/mydatabase
